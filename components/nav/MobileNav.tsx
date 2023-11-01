@@ -2,8 +2,9 @@ import Link from "next/dist/client/link";
 import { Image } from "next/dist/client/image-component";
 import type { GetProviderResponse } from "./Nav";
 
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { useState } from "react";
+import SignInDropDownMenu from "./SignInDropDownMenu";
 
 type Props = {
   isLogged: boolean;
@@ -58,20 +59,7 @@ const MobileNav = ({ isLogged, providers, profilePicture }: Props) => {
           )}
         </div>
       ) : (
-        <>
-          {providers &&
-            Object.values(providers).map((provider) => {
-              return (
-                <button
-                  className="primary-btn"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                >
-                  Sign In with {provider.name}
-                </button>
-              );
-            })}
-        </>
+        <SignInDropDownMenu providers={providers} />
       )}
     </div>
   );
