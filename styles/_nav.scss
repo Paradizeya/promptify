@@ -1,0 +1,83 @@
+.headerNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding: 10px clamp(10px, 5vw, 2rem);
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    &__text {
+      font-weight: 800;
+      letter-spacing: 0.1rem;
+      @media (max-width: 450px) {
+        display: none;
+      }
+    }
+  }
+
+  &__profilePicture {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 37px;
+    width: 37px;
+  }
+}
+
+.headerNav__desktop,
+.headerNav__mobile {
+  &__loggedMenu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.headerNav__desktop {
+  @media (max-width: 450px) {
+    display: none;
+  }
+}
+
+.headerNav__mobile {
+  position: relative;
+  @media (min-width: 451px) {
+    display: none;
+  }
+}
+
+.headerNav__mobile__dropdown {
+  position: absolute;
+  top: calc(37px + 1rem);
+  right: 0;
+
+  border-radius: 6px;
+
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  padding: 1rem;
+  white-space: nowrap;
+
+  &__link {
+    cursor: pointer;
+    transition: 0.3s;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+
+  &__hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #333;
+  }
+}

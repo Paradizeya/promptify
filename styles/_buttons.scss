@@ -1,0 +1,38 @@
+button {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+@mixin base-btn($bg, $border, $text, $bgHover, $borderHover, $textHover) {
+  border-radius: 14px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 400;
+
+  background-color: $bg;
+  border: 1px solid $border;
+  color: $text;
+
+  transition: 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $bgHover;
+      border: 1px solid $borderHover;
+      color: $textHover;
+      //box-shadow: 0px 2px 5px rgba(56, 56, 56, 0.363);
+    }
+  }
+}
+
+.primary-btn {
+  @include base-btn(black, black, white, transparent, black, black);
+}
+
+.secondary-btn {
+  @include base-btn(transparent, black, black, black, black, white);
+}

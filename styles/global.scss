@@ -1,1 +1,48 @@
 @import "./variables.scss";
+
+// ---------- Style reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+// ---------- General Styles
+
+body {
+  background-color: $white;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 8vw;
+}
+
+main {
+  padding: 1rem 6vw;
+}
+
+section {
+  width: 100%;
+
+  display: grid;
+  place-items: center;
+}
+
+// Header Styles
+@import "./nav.scss";
+
+// Home Page styles
+@import "./homePage.scss";
+
+// Buttons styles
+@import "./buttons.scss";
