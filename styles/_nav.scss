@@ -50,7 +50,7 @@
 }
 
 .headerNav__mobile__dropdown {
-  $top: calc(100% + 1rem);
+  $top: calc(100% + 0.5rem);
   @include dropDown($top, flex-end);
 
   &__link {
@@ -73,10 +73,8 @@
 
 .signInMenu {
   position: relative;
-  &__header {
-  }
   &__body {
-    $top: calc(100% + 1rem);
+    $top: calc(100% + 0.5rem);
     @include dropDown($top);
   }
 }
