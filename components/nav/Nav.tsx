@@ -47,7 +47,7 @@ const Nav = () => {
         profilePicture={
           session?.data?.user?.image
             ? session.data.user.image
-            : "/assets/images/logo.svg"
+            : "/assets/images/profile.svg"
         }
       />
       <MobileNav
@@ -56,7 +56,7 @@ const Nav = () => {
         profilePicture={
           session?.data?.user?.image
             ? session.data.user.image
-            : "/assets/images/logo.svg"
+            : "/assets/images/profile.svg"
         }
       />
     </nav>
