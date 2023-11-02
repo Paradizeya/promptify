@@ -1,7 +1,9 @@
 import { signIn } from "next-auth/react";
 import type { GetProviderResponse } from "./Nav";
+import { CSSTransition } from "react-transition-group";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import useOutsideClick from "@/hooks/useOutsideClick";
 
 type Props = {
   providers: GetProviderResponse;
@@ -9,6 +11,8 @@ type Props = {
 
 const SignInDropDownMenu = ({ providers }: Props) => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  const transitionNodeRef = useRef(null);
+  useOutsideClick(() => setToggleDropdown(false), transitionNodeRef);
 
   return (
     <div className="signInMenu">
@@ -18,8 +22,14 @@ const SignInDropDownMenu = ({ providers }: Props) => {
       >
         Sign In
       </button>
-      {toggleDropdown && (
-        <div className="signInMenu__body">
+      <CSSTransition
+        in={toggleDropdown}
+        timeout={300}
+        unmountOnExit
+        classNames="transitionDropDown"
+        nodeRef={transitionNodeRef}
+      >
+        <div className="signInMenu__body" ref={transitionNodeRef}>
           {providers &&
             Object.values(providers).map((provider) => {
               return (
@@ -36,7 +46,7 @@ const SignInDropDownMenu = ({ providers }: Props) => {
               );
             })}
         </div>
-      )}
+      </CSSTransition>
     </div>
   );
 };

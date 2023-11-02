@@ -1,10 +1,12 @@
 import Link from "next/dist/client/link";
 import { Image } from "next/dist/client/image-component";
 import type { GetProviderResponse } from "./Nav";
+import { CSSTransition } from "react-transition-group";
 
 import { signOut } from "next-auth/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SignInDropDownMenu from "./SignInDropDownMenu";
+import useOutsideClick from "@/hooks/useOutsideClick";
 
 type Props = {
   isLogged: boolean;
@@ -14,6 +16,8 @@ type Props = {
 
 const MobileNav = ({ isLogged, providers, profilePicture }: Props) => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  const transitionNodeRef = useRef(null);
+  useOutsideClick(() => setToggleDropdown(false), transitionNodeRef);
 
   return (
     <div className="headerNav__mobile">
@@ -29,8 +33,17 @@ const MobileNav = ({ isLogged, providers, profilePicture }: Props) => {
             />
           </div>
 
-          {toggleDropdown && (
-            <div className="headerNav__mobile__dropdown">
+          <CSSTransition
+            in={toggleDropdown}
+            timeout={300}
+            unmountOnExit
+            classNames="transitionDropDown"
+            nodeRef={transitionNodeRef}
+          >
+            <div
+              className="headerNav__mobile__dropdown"
+              ref={transitionNodeRef}
+            >
               <Link
                 className="headerNav__mobile__dropdown__link"
                 href={"/profile"}
@@ -56,7 +69,7 @@ const MobileNav = ({ isLogged, providers, profilePicture }: Props) => {
                 Sign Out
               </button>
             </div>
-          )}
+          </CSSTransition>
         </div>
       ) : (
         <SignInDropDownMenu providers={providers} />
