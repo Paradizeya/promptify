@@ -7,12 +7,20 @@
   padding: 10px clamp(10px, 5vw, 2rem);
 
   &__logo {
+    $shadow: 2px 2px 4px pink;
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    &__image {
+      filter: drop-shadow($shadow);
+    }
+
     &__text {
-      font-weight: 800;
+      font-size: 1.25rem;
       letter-spacing: 0.1rem;
+      color: lighten($pink, 8%);
+      text-shadow: $shadow;
       @media (max-width: 450px) {
         display: none;
       }

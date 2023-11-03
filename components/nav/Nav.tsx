@@ -11,6 +11,12 @@ import { useSession, getProviders } from "next-auth/react";
 import type { ClientSafeProvider, LiteralUnion } from "next-auth/react";
 import { BuiltInProviderType } from "next-auth/providers/index";
 
+import { Pacifico } from "next/font/google";
+const font = Pacifico({
+  weight: ["400"],
+  subsets: ["latin", "cyrillic"],
+});
+
 export type GetProviderResponse = Record<
   LiteralUnion<BuiltInProviderType, string>,
   ClientSafeProvider
@@ -33,12 +39,15 @@ const Nav = () => {
     <nav className="headerNav">
       <Link href={"/"} className="headerNav__logo">
         <Image
+          className="headerNav__logo__image"
           src={"/assets/images/logo.svg"}
           alt="Promptify Logo"
           width={30}
           height={30}
         />
-        <span className="headerNav__logo__text">Promptify</span>
+        <span className={`${font.className} headerNav__logo__text`}>
+          Promptify
+        </span>
       </Link>
 
       <DesktopNav

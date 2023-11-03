@@ -1,0 +1,18 @@
+//Drop Down open-close animations
+.transitionDropDown-enter {
+  opacity: 0;
+  transform: scale(0.9) translateY(-1rem);
+}
+.transitionDropDown-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 250ms, transform 300ms;
+}
+.transitionDropDown-exit {
+  opacity: 1;
+}
+.transitionDropDown-exit-active {
+  opacity: 0;
+  transform: scale(0.9) translateY(-1rem);
+  transition: opacity 250ms, transform 250ms;
+}
