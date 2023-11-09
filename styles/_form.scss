@@ -1,0 +1,35 @@
+.form {
+  @include glassmorphism();
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 1rem;
+  //max-width: 80vw;
+  > * {
+    width: 100%;
+  }
+  &__inputName {
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  &__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: inherit;
+    transition: border-bottom 0.2s;
+    resize: vertical;
+    &:focus {
+      border-bottom: 1px solid $blue;
+    }
+  }
+  &__buttonsPanel {
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -19,3 +19,11 @@ $white: #fff8f2;
   padding: 1rem;
   white-space: nowrap;
 }
+
+@mixin glassmorphism($borderRad: 10px, $bgcol: rgba(201, 201, 201, 0.178)) {
+  /* From https://css.glass */
+  background: $bgcol;
+  border-radius: $borderRad;
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+}

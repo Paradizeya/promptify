@@ -21,10 +21,14 @@ h4 {
 
 body {
   background-color: $white;
+  background: radial-gradient(
+    circle,
+    rgb(248, 238, 219) 0%,
+    rgba(255, 253, 250, 1) 100%
+  );
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  gap: 8vw;
 }
 
 main {
@@ -38,11 +42,23 @@ section {
   place-items: center;
 }
 
+.smallText {
+  font-size: clamp(0.75rem, 7vw, 0.85rem);
+  color: rgb(46, 46, 46);
+  font-weight: 300;
+}
+
 // Header Styles
 @import "./nav.scss";
 
 // Home Page styles
 @import "./homePage.scss";
+
+// Home Page styles
+@import "./createPage.scss";
+
+// Buttons styles
+@import "./form.scss";
 
 // Buttons styles
 @import "./buttons.scss";

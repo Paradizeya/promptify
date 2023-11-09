@@ -36,3 +36,7 @@ button {
 .secondary-btn {
   @include base-btn(transparent, black, black, black, black, white);
 }
+
+.action-btn {
+  @include base-btn($blue, $blue, white, $green, $green, white);
+}

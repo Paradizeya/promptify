@@ -1,0 +1,28 @@
+.create {
+  gap: 2rem;
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+
+    font-weight: 900;
+    font-size: clamp(1rem, 10vw, 2rem);
+
+    background: linear-gradient(
+      60deg,
+      $green,
+      lighten($blue, 20%),
+      $green,
+      lighten($blue, 20%)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: $blue;
+  }
+
+  &__desc {
+    font-weight: 300;
+    text-align: justify;
+    margin-top: 1rem;
+  }
+}
