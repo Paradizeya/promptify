@@ -8,9 +8,9 @@ type DataType = {
   tag: string;
 };
 
-type CustomRequest = NextApiRequest & {
+type CustomRequest = {
   json: () => Promise<DataType>;
-};
+} & NextApiRequest;
 
 export const POST = async (req: CustomRequest) => {
   const { userId, prompt, tag } = await req.json();
