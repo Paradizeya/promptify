@@ -1,14 +1,26 @@
 import Link from "next/link";
-import React from "react";
+import React, { Dispatch, SetStateAction, FormEvent } from "react";
 
-type Props = {};
+type Post = {
+  prompt: string;
+  tag: string;
+};
+type Props = {
+  type: string;
+  post: Post;
+  setPost: Dispatch<SetStateAction<Post>>;
+  isSubmitting: boolean;
+  handleSubmit: (e: FormEvent) => void;
+};
 
-const Form = ({}: Props) => {
+const Form = ({ type, post, setPost, isSubmitting, handleSubmit }: Props) => {
   return (
-    <form className="form" action="">
-      <label htmlFor="promptInput">
-        <h2 className="form__inputName">Your AI Prompt</h2>
+    <form onSubmit={handleSubmit} className="form" action="">
+      <label htmlFor="promptInput" className="form__textareaLabel">
+        <h2 className="form__inputName">{type} Your AI Prompt</h2>
         <textarea
+          value={post.prompt}
+          onChange={(e) => setPost({ ...post, prompt: e.target.value })}
           className="form__input"
           id="promptInput"
           placeholder="Write your post here"
@@ -18,7 +30,7 @@ const Form = ({}: Props) => {
         />
       </label>
 
-      <label htmlFor="tagInput">
+      <label htmlFor="tagInput" className="form__inputLabel">
         <h2 className="form__inputName">
           Tag{" "}
           <span className="smallText">
@@ -26,6 +38,8 @@ const Form = ({}: Props) => {
           </span>
         </h2>
         <input
+          value={post.tag}
+          onChange={(e) => setPost({ ...post, tag: e.target.value })}
           className="form__input"
           id="tagInput"
           type="text"
@@ -35,12 +49,8 @@ const Form = ({}: Props) => {
       </label>
 
       <div className="form__buttonsPanel">
-        <button
-          className="action-btn"
-          type="submit"
-          //disabled={submitting}
-        >
-          {/* {submitting ? `${type}ing...` : type} */} Button
+        <button type="submit" disabled={isSubmitting} className="action-btn">
+          {isSubmitting ? `Submitting...` : type}
         </button>
 
         <Link className="secondary-btn" href="/">
