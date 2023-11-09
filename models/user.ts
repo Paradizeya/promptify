@@ -1,5 +1,5 @@
 import { Schema, model, models } from "mongoose";
-import type { HydratedDocument, Model } from "mongoose";
+import type { Model } from "mongoose";
 
 interface IUser {
   email: string;
