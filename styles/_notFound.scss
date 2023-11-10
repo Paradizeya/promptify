@@ -1,0 +1,13 @@
+.notFound {
+  margin-top: 25dvh;
+  gap: 2rem;
+  text-align: center;
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: maroon;
+  }
+  &__text {
+    font-size: 1.25rem;
+  }
+}
