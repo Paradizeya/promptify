@@ -19,7 +19,7 @@ const PromptCardList = ({
 }) => {
   return (
     <div className="feed__listWrapper">
-      {data.map((post) => {
+      {data && data.map((post) => {
         return (
           <PromptCard
             key={post._id}
