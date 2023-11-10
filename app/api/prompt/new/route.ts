@@ -2,15 +2,11 @@ import { connectToDB } from "@/utils/database";
 import Prompt from "@/models/prompt";
 import { NextApiRequest } from "next";
 
-type DataType = {
-  userId: string;
-  prompt: string;
-  tag: string;
-};
-
-type CustomRequest = {
-  json: () => Promise<DataType>;
-} & NextApiRequest;
+// type DataType = {
+//   userId: string;
+//   prompt: string;
+//   tag: string;
+// };
 
 export const POST = async (req: any) => {
   const { userId, prompt, tag } = await req.json();
