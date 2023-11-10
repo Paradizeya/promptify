@@ -1,6 +1,6 @@
-type Props = {};
+import Feed from "@/components/feed/Feed";
 
-const HomePage = (props: Props) => {
+const HomePage = () => {
   return (
     <section className="home">
       <h1 className="home__title">
@@ -12,6 +12,7 @@ const HomePage = (props: Props) => {
         Promptify is an open-source AI prompting tool for modern world to
         discover, create and share creative prompts
       </p>
+      <Feed />
     </section>
   );
 };
