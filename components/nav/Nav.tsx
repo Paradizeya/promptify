@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { useSession, getProviders } from "next-auth/react";
 import type { ClientSafeProvider, LiteralUnion } from "next-auth/react";
 import { BuiltInProviderType } from "next-auth/providers/index";
+import { usePathname } from "next/navigation";
 
 import { Pacifico } from "next/font/google";
 const font = Pacifico({
@@ -24,6 +25,7 @@ export type GetProviderResponse = Record<
 
 const Nav = () => {
   const [providers, setProviders] = useState<GetProviderResponse>(null);
+  const pathnameIsCreate = usePathname() === "/create-prompt" ? true : false;
 
   useEffect(() => {
     const getProvidersList = async () => {
@@ -52,6 +54,7 @@ const Nav = () => {
 
       <DesktopNav
         providers={providers}
+        pathnameIsCreate={pathnameIsCreate}
         isLogged={session.data ? true : false}
         profilePicture={
           session?.data?.user?.image
@@ -61,6 +64,7 @@ const Nav = () => {
       />
       <MobileNav
         providers={providers}
+        pathnameIsCreate={pathnameIsCreate}
         isLogged={session.data ? true : false}
         profilePicture={
           session?.data?.user?.image

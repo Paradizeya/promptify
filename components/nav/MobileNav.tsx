@@ -12,9 +12,15 @@ type Props = {
   isLogged: boolean;
   providers: GetProviderResponse;
   profilePicture: string;
+  pathnameIsCreate: boolean;
 };
 
-const MobileNav = ({ isLogged, providers, profilePicture }: Props) => {
+const MobileNav = ({
+  isLogged,
+  providers,
+  profilePicture,
+  pathnameIsCreate,
+}: Props) => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const transitionNodeRef = useRef(null);
   useOutsideClick(() => setToggleDropdown(false), transitionNodeRef);
@@ -51,13 +57,15 @@ const MobileNav = ({ isLogged, providers, profilePicture }: Props) => {
               >
                 My profile
               </Link>
-              <Link
-                className="headerNav__mobile__dropdown__link"
-                href={"/create-prompt"}
-                onClick={() => setToggleDropdown(false)}
-              >
-                Create
-              </Link>
+              {!pathnameIsCreate && (
+                <Link
+                  className="headerNav__mobile__dropdown__link"
+                  href={"/create-prompt"}
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  Create
+                </Link>
+              )}
               <hr className="headerNav__mobile__dropdown__hr" />
               <button
                 onClick={() => {

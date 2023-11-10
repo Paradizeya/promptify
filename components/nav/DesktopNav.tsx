@@ -8,17 +8,24 @@ type Props = {
   isLogged: boolean;
   providers: GetProviderResponse;
   profilePicture: string;
+  pathnameIsCreate: boolean;
 };
 
-const DesktopNav = ({ isLogged, providers, profilePicture }: Props) => {
+const DesktopNav = ({
+  isLogged,
+  providers,
+  profilePicture,
+  pathnameIsCreate,
+}: Props) => {
   return (
     <div className="headerNav__desktop">
       {isLogged ? (
         <div className="headerNav__desktop__loggedMenu">
-          <Link href={"/create-prompt"} className="primary-btn">
-            Create
-          </Link>
-
+          {!pathnameIsCreate && (
+            <Link href={"/create-prompt"} className="primary-btn">
+              Create
+            </Link>
+          )}
           <button onClick={() => signOut()} className="secondary-btn">
             Sign Out
           </button>
