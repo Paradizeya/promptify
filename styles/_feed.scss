@@ -1,0 +1,33 @@
+.feed {
+  justify-items: stretch;
+  &__form {
+    margin: clamp(1rem, 6vw, 3rem) 0;
+    display: flex;
+    justify-content: center;
+  }
+  &__searchBar {
+    width: clamp(min(80vw, 200px), 50vw, 50vw);
+    box-shadow: 0px 4px 10px rgba(37, 37, 37, 0.1);
+    @include baseInput();
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50rem;
+      background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg)
+        no-repeat 50% 50%;
+      background-size: contain;
+      opacity: 0;
+      pointer-events: none;
+    }
+    &:focus {
+      &::-webkit-search-cancel-button {
+        opacity: 0.3;
+        pointer-events: all;
+      }
+    }
+  }
+  &__listWrapper {
+    background-color: $green;
+  }
+}

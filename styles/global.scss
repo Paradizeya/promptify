@@ -51,13 +51,15 @@ section {
 // Header Styles
 @import "./nav.scss";
 
-// Home Page styles
+// Home Page styles > feed, card
 @import "./homePage.scss";
+@import "./feed.scss";
+@import "./promptCard.scss";
 
 // Create Page styles
 @import "./createPage.scss";
 
-// Form styles
+// Reusable Form styles
 @import "./form.scss";
 
 // NotFound Page styles
