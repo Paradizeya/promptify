@@ -26,13 +26,8 @@
     height: calc(100% - 2rem);
   }
   &__input {
+    @include baseInput();
     width: 100%;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    font-family: inherit;
     transition: border-bottom 0.2s;
     resize: none;
     &:focus {
