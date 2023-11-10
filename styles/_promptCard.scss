@@ -1,0 +1,7 @@
+.promptCard {
+  @include glassmorphism();
+  padding: 1rem;
+  &__body {
+    text-align: justify;
+  }
+}

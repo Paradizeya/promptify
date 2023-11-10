@@ -5,8 +5,8 @@ type Props = {
 
 const PromptCard = ({ post, handleTagClick }: Props) => {
   return (
-    <article>
-      <p>{post.prompt}</p>
+    <article className="promptCard">
+      <p className="promptCard__body">{post.prompt}</p>
     </article>
   );
 };

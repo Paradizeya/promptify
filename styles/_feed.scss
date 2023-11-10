@@ -28,6 +28,8 @@
     }
   }
   &__listWrapper {
-    background-color: $green;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(80%, 200px), 1fr));
+    gap: 1rem;
   }
 }
