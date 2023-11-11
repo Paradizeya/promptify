@@ -19,7 +19,7 @@ const PromptCardList = ({
 }) => {
   return (
     <div className="feed__listWrapper">
-      {data.map((post) => {
+      {data && data.map((post) => {
         return (
           <PromptCard
             key={post._id}
@@ -44,7 +44,9 @@ const Feed = () => {
     const fetchPosts = async () => {
       const response = await fetch("/api/prompt");
       const data = await response.json();
-      setPosts(data);
+      if(response.ok){
+        setPosts(data);
+      }
     };
     fetchPosts();
   }, []);
