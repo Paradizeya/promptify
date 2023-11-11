@@ -1,5 +1,7 @@
 import mongoose, { Schema, model, models } from "mongoose";
 import type { Model } from "mongoose";
+import User from "@/models/user";
+//require("@/models/user");
 
 interface IPrompt {
   creator: mongoose.Schema.Types.ObjectId;
@@ -10,7 +12,7 @@ interface IPrompt {
 const PromptSchema = new Schema<IPrompt>({
   creator: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: User.modelName,
   },
   prompt: {
     type: String,
