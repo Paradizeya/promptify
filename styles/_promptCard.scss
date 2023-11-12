@@ -9,13 +9,16 @@
   &__header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
+  }
+  &__userInfo {
+    display: flex;
+    gap: 1rem;
+    word-break: break-word;
   }
   &__avatar {
     border-radius: 50%;
-  }
-  &__userInfo {
-    word-break: break-word;
   }
   &__title {
     font-weight: 700;
@@ -24,6 +27,22 @@
     font-weight: 300;
     font-size: 0.75rem;
     color: gray;
+  }
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    > img {
+      cursor: pointer;
+
+      @media (hover: hover) {
+        &:hover {
+          filter: hue-rotate(220deg) brightness(1.6);
+        }
+      }
+    }
   }
   //Body
   &__body {
