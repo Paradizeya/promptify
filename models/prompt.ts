@@ -1,7 +1,7 @@
 import mongoose, { Schema, model, models } from "mongoose";
 import type { Model } from "mongoose";
 import User from "@/models/user";
-//require("@/models/user");
+require("@/models/user");
 
 interface IPrompt {
   creator: mongoose.Schema.Types.ObjectId;
