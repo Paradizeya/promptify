@@ -36,32 +36,32 @@ const PromptCard = ({ post, handleTagClick }: Props) => {
         </div>
 
         <div className="promptCard__actions">
+          <Image
+            src={
+              copied === post.prompt
+                ? "/assets/icons/tick.svg"
+                : "/assets/icons/copy.svg"
+            }
+            alt={copied === post.prompt ? "tick_icon" : "copy_icon"}
+            width={20}
+            height={20}
+          />
           {session.data?.user.id === post.creator._id && (
             <>
-              <Image
-                src={
-                  copied === post.prompt
-                    ? "/assets/icons/tick.svg"
-                    : "/assets/icons/copy.svg"
-                }
-                alt={copied === post.prompt ? "tick_icon" : "copy_icon"}
-                width={20}
-                height={20}
-              />
               <Image
                 src={"/assets/icons/edit.svg"}
                 alt="edit_icon"
                 width={20}
                 height={20}
               />
+              <Image
+                src={"/assets/icons/delete.svg"}
+                alt="delete_icon"
+                width={22}
+                height={22}
+              />
             </>
           )}
-          <Image
-            src={"/assets/icons/delete.svg"}
-            alt="delete_icon"
-            width={22}
-            height={22}
-          />
         </div>
       </div>
 
