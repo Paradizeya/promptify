@@ -3,11 +3,16 @@
 import { useState, useEffect, FormEvent } from "react";
 import PromptCard from "@/components/promptCard/PromptCard";
 
-type Post = {
+export type Post = {
   _id: string;
   userId: string;
   prompt: string;
   tag: string;
+  creator: {
+    username: string;
+    email: string;
+    image: string;
+  };
 };
 
 const PromptCardList = ({
@@ -15,19 +20,20 @@ const PromptCardList = ({
   handleTagClick,
 }: {
   data: Post[];
-  handleTagClick: any;
+  handleTagClick: () => void;
 }) => {
   return (
     <div className="feed__listWrapper">
-      {data && data.map((post) => {
-        return (
-          <PromptCard
-            key={post._id}
-            post={post}
-            handleTagClick={handleTagClick}
-          />
-        );
-      })}
+      {data &&
+        data.map((post) => {
+          return (
+            <PromptCard
+              key={post._id}
+              post={post}
+              handleTagClick={handleTagClick}
+            />
+          );
+        })}
     </div>
   );
 };
@@ -44,7 +50,7 @@ const Feed = () => {
     const fetchPosts = async () => {
       const response = await fetch("/api/prompt");
       const data = await response.json();
-      if(response.ok){
+      if (response.ok) {
         setPosts(data);
       }
     };
