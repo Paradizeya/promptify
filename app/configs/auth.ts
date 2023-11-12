@@ -73,7 +73,7 @@ export const authConfig: AuthOptions = {
         //Get user data from DB to connect one email to multiple providers
         session.user.name = sessionUser.username;
         session.user.email = sessionUser.email;
-        //session.user.image = sessionUser.image; //comment off to use img of current provider
+        session.user.image = sessionUser.image; //comment off to use img of current provider
         //save id in session
         session.user.id = sessionUser._id.toString();
       }
