@@ -19,6 +19,9 @@
   }
   &__avatar {
     border-radius: 50%;
+    &_clickable {
+      cursor: pointer;
+    }
   }
   &__title {
     font-weight: 700;

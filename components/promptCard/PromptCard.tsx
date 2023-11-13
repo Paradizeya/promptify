@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import type { Post } from "@/components/feed/Feed";
 type Props = {
@@ -14,6 +14,7 @@ type Props = {
 const PromptCard = ({ post, handleTagClick }: Props) => {
   const [copied, setCopied] = useState("");
   const session = useSession();
+  const router = useRouter();
   const pathName = usePathname();
 
   const handleCopy = () => {
@@ -27,7 +28,9 @@ const PromptCard = ({ post, handleTagClick }: Props) => {
       <div className="promptCard__header">
         <div className="promptCard__userInfo">
           <Image
-            className="promptCard__avatar"
+            className={`promptCard__avatar ${
+              !pathName.includes("/profile") && "promptCard__avatar_clickable"
+            }`}
             height={40}
             width={40}
             src={
@@ -36,6 +39,10 @@ const PromptCard = ({ post, handleTagClick }: Props) => {
                 : "/assets/images/profile.svg"
             }
             alt="avatar"
+            onClick={() =>
+              !pathName.includes("/profile") &&
+              router.push(`/profile/${post.creator._id}`)
+            }
           />
           <div>
             <h3 className="promptCard__title">{post.creator.username}</h3>
@@ -55,23 +62,22 @@ const PromptCard = ({ post, handleTagClick }: Props) => {
             height={20}
             onClick={() => handleCopy()}
           />
-          {session.data?.user.id === post.creator._id &&
-            pathName === "/profile" && (
-              <>
-                <Image
-                  src={"/assets/icons/edit.svg"}
-                  alt="edit_icon"
-                  width={20}
-                  height={20}
-                />
-                <Image
-                  src={"/assets/icons/delete.svg"}
-                  alt="delete_icon"
-                  width={22}
-                  height={22}
-                />
-              </>
-            )}
+          {session.data?.user.id === post.creator._id && pathName !== "/" && (
+            <>
+              <Image
+                src={"/assets/icons/edit.svg"}
+                alt="edit_icon"
+                width={20}
+                height={20}
+              />
+              <Image
+                src={"/assets/icons/delete.svg"}
+                alt="delete_icon"
+                width={22}
+                height={22}
+              />
+            </>
+          )}
         </div>
       </div>
 
