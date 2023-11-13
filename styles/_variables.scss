@@ -5,6 +5,7 @@ $green: #06d6a0;
 $white: #fff8f2;
 
 @mixin dropDown($top, $align: stretch) {
+  z-index: 1000;
   position: absolute;
   top: $top;
   right: 0;
