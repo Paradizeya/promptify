@@ -1,16 +1,10 @@
-"use client";
+import { getServerSession } from "next-auth";
+import { authConfig } from "@/app/configs/auth";
+import { redirect } from "next/navigation";
 
-import { useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-
-const ProfilePage = () => {
-  const router = useRouter();
-  const session = useSession();
-  useEffect(() => {
-    router.push(`/profile/${session?.data?.user.id}`);
-  }, [session.data?.user.id]);
-
+const ProfilePage = async () => {
+  const data = await getServerSession(authConfig);
+  redirect(`/profile/${data?.user.id}`);
   return <></>;
 };
 
