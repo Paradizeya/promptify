@@ -8,7 +8,7 @@ const ProfilePage = () => {
   const router = useRouter();
   const session = useSession();
   useEffect(() => {
-    router.push(`/profile/${session?.data?.user.id}`);
+    router.replace(`/profile/${session?.data?.user.id}`);
   }, [session.data?.user.id]);
 
   return <></>;
