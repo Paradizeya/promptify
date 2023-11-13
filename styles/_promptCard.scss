@@ -59,14 +59,16 @@
     text-align: justify;
   }
   &__tag {
-    cursor: pointer;
     font-weight: 300;
     font-size: 0.85rem;
     color: gray;
     transition: color 0.25s;
-    @media (hover: hover) {
-      &:hover {
-        color: $green;
+    &_clickable {
+      cursor: pointer;
+      @media (hover: hover) {
+        &:hover {
+          color: $green;
+        }
       }
     }
   }

@@ -84,7 +84,9 @@ const PromptCard = ({ post, handleTagClick }: Props) => {
       <div className="promptCard__body">
         <p className="promptCard__post">{post.prompt}</p>
         <a
-          className="promptCard__tag"
+          className={`promptCard__tag ${
+            !pathName.includes("/profile") && "promptCard__tag_clickable"
+          }`}
           onClick={() => handleTagClick && handleTagClick(post.tag)}
         >
           {post.tag}
