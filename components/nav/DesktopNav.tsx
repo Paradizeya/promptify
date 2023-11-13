@@ -26,7 +26,10 @@ const DesktopNav = ({
               Create
             </Link>
           )}
-          <button onClick={() => signOut()} className="secondary-btn">
+          <button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            className="secondary-btn"
+          >
             Sign Out
           </button>
 

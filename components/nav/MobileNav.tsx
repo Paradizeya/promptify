@@ -70,7 +70,7 @@ const MobileNav = ({
               <button
                 onClick={() => {
                   setToggleDropdown(false);
-                  signOut();
+                  signOut({ callbackUrl: "/" });
                 }}
                 className="primary-btn"
               >
