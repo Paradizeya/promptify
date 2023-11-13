@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, FormEvent } from "react";
-import PromptCard from "@/components/promptCard/PromptCard";
+import { useState, useEffect } from "react";
+import PromptCardList from "@/components/promptCard/PromptCardList";
 
 export type Post = {
   _id: string;
@@ -14,29 +14,6 @@ export type Post = {
     email: string;
     image: string;
   };
-};
-
-const PromptCardList = ({
-  data,
-  handleTagClick,
-}: {
-  data: Post[];
-  handleTagClick: () => void;
-}) => {
-  return (
-    <div className="feed__listWrapper">
-      {data &&
-        data.map((post) => {
-          return (
-            <PromptCard
-              key={post._id}
-              post={post}
-              handleTagClick={handleTagClick}
-            />
-          );
-        })}
-    </div>
-  );
 };
 
 const Feed = () => {
