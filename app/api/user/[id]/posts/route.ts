@@ -11,7 +11,6 @@ export const GET = async (
 ) => {
   try {
     await connectToDB();
-    console.log(params.id);
     const prompts = await Prompt.find({ creator: params.id }).populate(
       "creator"
     );
