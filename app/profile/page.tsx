@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 
 const ProfilePage = () => {
   const session = useSession();
+  const router = useRouter();
   useEffect(() => {
-    const router = useRouter();
     router.replace(`/profile/${session?.data?.user.id}`);
-  }, [session.data?.user.id]);
+  }, [session.data?.user.id, router]);
 
   return <></>;
 };
