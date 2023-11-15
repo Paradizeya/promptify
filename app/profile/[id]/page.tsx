@@ -12,13 +12,34 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
   const posts = await getUserPosts(params.id);
   const user = await getUser(params.id);
 
+  const handleEdit = async (id: string) => {
+    "use server";
+    console.log(id);
+  };
+
+  const handleDelete = async (id: string) => {
+    "use server";
+    try {
+      const response = await fetch(process.env.URL + `/api/prompt/${id}`, {
+        method: "DELETE",
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (user !== null) {
     return (
       <section className="profile">
         <h1 className="profile__title">
           {isMyProfile ? `My Profile` : `${user.username}'s Profile`}
         </h1>
-        <PromptCardList data={posts} />
+        <PromptCardList
+          data={posts}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
       </section>
     );
   } else {
