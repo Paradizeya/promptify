@@ -1,0 +1,13 @@
+.home {
+  &__title {
+    &__gradient {
+      @include title($yellow, $pink);
+    }
+  }
+
+  &__desc {
+    font-weight: 300;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
