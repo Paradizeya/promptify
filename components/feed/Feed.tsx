@@ -7,7 +7,7 @@ const Feed = async () => {
   return (
     <section className="feed">
       <SearchForm />
-      <PromptCardList data={posts} />
+      {posts && <PromptCardList data={posts} />}
     </section>
   );
 };

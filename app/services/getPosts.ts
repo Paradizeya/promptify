@@ -1,6 +1,6 @@
 import type Post from "@/types/Post";
 
-const getPosts = async (): Promise<Post[]> => {
+const getPosts = async (): Promise<Post[] | null> => {
   const response = await fetch(
     process.env.NEXT_PUBLIC_BASE_URL + "/api/prompt",
     {
@@ -11,7 +11,7 @@ const getPosts = async (): Promise<Post[]> => {
   if (response.ok) {
     return data;
   }
-  return [];
+  return null;
 };
 
 export default getPosts;
