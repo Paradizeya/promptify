@@ -1,5 +1,6 @@
 .profile {
   gap: 1rem;
+  width: 100%;
   &__title {
     @include title($green, $green);
   }
