@@ -20,9 +20,12 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
   const handleDelete = async (id: string) => {
     "use server";
     try {
-      const response = await fetch(process.env.URL + `/api/prompt/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BASE_URL + `/api/prompt/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       console.log(response);
     } catch (error) {
       console.log(error);
