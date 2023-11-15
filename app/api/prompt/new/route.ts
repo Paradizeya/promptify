@@ -1,12 +1,7 @@
 import { connectToDB } from "@/utils/database";
 import Prompt from "@/models/prompt";
+import { revalidateTag } from "next/cache";
 import { NextApiRequest } from "next";
-
-// type DataType = {
-//   userId: string;
-//   prompt: string;
-//   tag: string;
-// };
 
 export const POST = async (req: any) => {
   const { userId, prompt, tag } = await req.json();
@@ -15,6 +10,9 @@ export const POST = async (req: any) => {
     await connectToDB();
     const newPrompt = new Prompt({ creator: userId, prompt, tag });
     await newPrompt.save();
+    //Revalidate all posts and posts of this user if new prompt has been created
+    revalidateTag("allPosts");
+    revalidateTag(`${userId}_posts`);
 
     return new Response(JSON.stringify(newPrompt), { status: 201 });
   } catch (error) {
