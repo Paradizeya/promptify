@@ -42,6 +42,14 @@ section {
   place-items: center;
 }
 
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+
+  font-weight: 900;
+  font-size: clamp(1rem, 10vw, 2rem);
+}
+
 .smallText {
   font-size: clamp(0.75rem, 7vw, 0.85rem);
   color: rgb(46, 46, 46);
@@ -52,12 +60,15 @@ section {
 @import "./nav.scss";
 
 // Home Page styles > feed, card
-@import "./homePage.scss";
+@import "./pages/homePage.scss";
 @import "./feed.scss";
 @import "./promptCard.scss";
 
 // Create Page styles
-@import "./createPage.scss";
+@import "./pages/createPage.scss";
+
+// Profile Page styles
+@import "./pages/profilePage.scss";
 
 // Reusable Form styles
 @import "./form.scss";
