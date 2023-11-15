@@ -21,7 +21,7 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
     "use server";
     try {
       const response = await fetch(
-        process.env.NEXT_PUBLIC_BASE_URL + `/api/prompt/${id}`,
+        process.env.NEXT_PUBLIC_BASE_URL?.toString() + `/api/prompt/${id}`,
         {
           method: "DELETE",
         }
