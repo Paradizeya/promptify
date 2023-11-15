@@ -30,6 +30,14 @@ const PromptCard = ({
     setTimeout(() => setCopied(""), 3000);
   };
 
+  const handleLocalDelete = (id: string) => {
+    const confirmDelete = confirm("Are you sure you want to delete this post?");
+    if (confirmDelete && handleDelete) {
+      handleDelete(post._id);
+      router.refresh();
+    }
+  };
+
   return (
     <article className="promptCard">
       <div className="promptCard__header">
@@ -83,7 +91,7 @@ const PromptCard = ({
                 alt="delete_icon"
                 width={22}
                 height={22}
-                onClick={() => handleDelete && handleDelete(post._id)}
+                onClick={() => handleDelete && handleLocalDelete(post._id)}
               />
             </>
           )}
