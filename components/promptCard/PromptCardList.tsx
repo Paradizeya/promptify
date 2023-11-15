@@ -1,4 +1,4 @@
-import type { Post } from "@/components/feed/Feed";
+import type Post from "@/types/Post";
 import PromptCard from "./PromptCard";
 
 const PromptCardList = ({

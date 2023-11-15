@@ -5,13 +5,20 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
-import type { Post } from "@/components/feed/Feed";
+import type Post from "@/types/Post";
 type Props = {
   post: Post;
   handleTagClick?: (tag: string) => void;
+  handleDelete?: (id: string) => void;
+  handleEdit?: (id: string) => void;
 };
 
-const PromptCard = ({ post, handleTagClick }: Props) => {
+const PromptCard = ({
+  post,
+  handleTagClick,
+  handleDelete,
+  handleEdit,
+}: Props) => {
   const [copied, setCopied] = useState("");
   const session = useSession();
   const router = useRouter();
@@ -69,12 +76,14 @@ const PromptCard = ({ post, handleTagClick }: Props) => {
                 alt="edit_icon"
                 width={20}
                 height={20}
+                onClick={() => handleEdit && handleEdit(post._id)}
               />
               <Image
                 src={"/assets/icons/delete.svg"}
                 alt="delete_icon"
                 width={22}
                 height={22}
+                onClick={() => handleDelete && handleDelete(post._id)}
               />
             </>
           )}
