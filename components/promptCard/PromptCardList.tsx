@@ -9,7 +9,7 @@ const PromptCardList = ({
   handleTagClick?: (tag: string) => void;
 }) => {
   return (
-    <div className="feed__listWrapper">
+    <div className="promptListWrapper">
       {data &&
         data.map((post) => {
           return (
