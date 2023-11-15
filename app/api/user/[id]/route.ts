@@ -12,7 +12,7 @@ export const GET = async (
   try {
     await connectToDB();
     const user = await User.findById(params.id);
-    if (!prompt)
+    if (!user)
       return new Response(JSON.stringify("User not found"), {
         status: 404,
       });
