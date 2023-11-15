@@ -2,7 +2,7 @@ import type User from "@/types/User";
 
 const getUser = async (id: string): Promise<User | null> => {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_BASE_URL?.toString() + `/api/user/${id}`,
+    process.env.NEXT_PUBLIC_BASE_URL + `/api/user/${id}`,
     {
       next: { tags: [`${id}`] },
     }

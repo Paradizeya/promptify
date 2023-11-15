@@ -2,7 +2,7 @@ import type Post from "@/types/Post";
 
 const getPosts = async (): Promise<Post[]> => {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_BASE_URL?.toString() + "/api/prompt",
+    process.env.NEXT_PUBLIC_BASE_URL + "/api/prompt",
     {
       next: { revalidate: 10000, tags: ["allPosts"] },
     }
