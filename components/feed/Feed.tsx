@@ -3,11 +3,11 @@ import getPosts from "@/app/services/getPosts";
 import SearchForm from "@/components/feed/SearchForm";
 
 const Feed = async () => {
-  const posts = await getPosts();
+  //const posts = await getPosts();
   return (
     <section className="feed">
       <SearchForm />
-      {posts && <PromptCardList data={posts} />}
+      {/* {posts && <PromptCardList data={posts} />} */}
     </section>
   );
 };
