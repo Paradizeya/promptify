@@ -1,18 +1,14 @@
 import type User from "@/types/User";
 
-const getUser = async (id: string): Promise<User> => {
+const getUser = async (id: string): Promise<User | null> => {
   const response = await fetch(process.env.URL + `/api/user/${id}`, {
-    next: { revalidate: 1, tags: [`${id}`] },
+    next: { tags: [`${id}`] },
   });
   const data = await response.json();
   if (response.ok) {
-    if (data[0]) {
-      return data[0];
-    } else {
-      throw new Error("User not found");
-    }
+    return data;
   }
-  throw new Error("Error fetching user data");
+  return null;
 };
 
 export default getUser;
