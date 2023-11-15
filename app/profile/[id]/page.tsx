@@ -3,6 +3,7 @@ import getUserPosts from "@/app/services/getUserPosts";
 import PromptCardList from "@/components/promptCard/PromptCardList";
 import { authConfig } from "@/app/configs/auth";
 import { getServerSession } from "next-auth/next";
+import NotFoundPage from "@/app/not-found";
 
 const ProfilePage = async ({ params }: { params: { id: string } }) => {
   const session = await getServerSession(authConfig);
@@ -11,14 +12,18 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
   const posts = await getUserPosts(params.id);
   const user = await getUser(params.id);
 
-  return (
-    <section className="profile">
-      <h1 className="profile__title">
-        {isMyProfile ? `My Profile` : `${user.username}'s Profile`}
-      </h1>
-      <PromptCardList data={posts} />
-    </section>
-  );
+  if (user !== null) {
+    return (
+      <section className="profile">
+        <h1 className="profile__title">
+          {isMyProfile ? `My Profile` : `${user.username}'s Profile`}
+        </h1>
+        <PromptCardList data={posts} />
+      </section>
+    );
+  } else {
+    return <NotFoundPage error="This user does not exists" />;
+  }
 };
 
 export default ProfilePage;
