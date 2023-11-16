@@ -5,7 +5,7 @@ const getPosts = async (): Promise<Post[] | null> => {
     process.env.NEXT_PUBLIC_BASE_URL + "/api/prompt",
     {
       next: { tags: ["allPosts"] },
-      cache: "no-store",
+      cache: "no-cache",
     }
   );
   const data = await response.json();
