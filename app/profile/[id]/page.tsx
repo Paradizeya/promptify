@@ -1,17 +1,18 @@
 import getUser from "@/app/services/getUser";
 import getUserPosts from "@/app/services/getUserPosts";
 import PromptCardList from "@/components/promptCard/PromptCardList";
-import { authConfig } from "@/app/configs/auth";
-import { getServerSession } from "next-auth/next";
+//import { authConfig } from "@/app/configs/auth";
+//import { getServerSession } from "next-auth/next";
 import NotFoundPage from "@/app/not-found";
 
 const ProfilePage = async ({ params }: { params: { id: string } }) => {
-  const session = await getServerSession(authConfig);
-  const isMyProfile = session?.user.id === params.id ? true : false;
+  //const session = await getServerSession(authConfig);
+  //const isMyProfile = session?.user.id === params.id ? true : false;
+  const isMyProfile = false;
 
-  const posts = await getUserPosts(params.id);
   const user = await getUser(params.id);
-
+  const posts = await getUserPosts(params.id);
+  
   const handleEdit = async (id: string) => {
     "use server";
     console.log(id);
