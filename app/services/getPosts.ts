@@ -4,7 +4,8 @@ const getPosts = async (): Promise<Post[] | null> => {
   const response = await fetch(
     process.env.NEXT_PUBLIC_BASE_URL + "/api/prompt",
     {
-      next: { revalidate: 10000, tags: ["allPosts"] },
+      next: { tags: ["allPosts"] },
+      cache: "no-store",
     }
   );
   const data = await response.json();
