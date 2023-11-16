@@ -1,9 +1,9 @@
 import PromptCardList from "@/components/promptCard/PromptCardList";
-import getPosts from "@/app/services/getPosts";
-import SearchForm from "@/components/feed/SearchForm";
 
-const Feed = async () => {
-  const posts = await getPosts();
+import SearchForm from "@/components/feed/SearchForm";
+import Post from "@/types/Post";
+
+const Feed = ({ posts }: { posts: Post[] | null }) => {
   return (
     <section className="feed">
       <SearchForm />
