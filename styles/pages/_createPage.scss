@@ -1,0 +1,12 @@
+.create {
+  gap: 2rem;
+  &__title {
+    @include title($green, $blue);
+  }
+
+  &__desc {
+    font-weight: 300;
+    text-align: justify;
+    margin-top: 1rem;
+  }
+}

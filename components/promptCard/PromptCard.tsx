@@ -5,13 +5,20 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
-import type { Post } from "@/components/feed/Feed";
+import type Post from "@/types/Post";
 type Props = {
   post: Post;
   handleTagClick?: (tag: string) => void;
+  handleDelete?: (id: string) => void;
+  handleEdit?: (id: string) => void;
 };
 
-const PromptCard = ({ post, handleTagClick }: Props) => {
+const PromptCard = ({
+  post,
+  handleTagClick,
+  handleDelete,
+  handleEdit,
+}: Props) => {
   const [copied, setCopied] = useState("");
   const session = useSession();
   const router = useRouter();
@@ -21,6 +28,14 @@ const PromptCard = ({ post, handleTagClick }: Props) => {
     setCopied(post.prompt);
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopied(""), 3000);
+  };
+
+  const handleLocalDelete = (id: string) => {
+    const confirmDelete = confirm("Are you sure you want to delete this post?");
+    if (confirmDelete && handleDelete) {
+      handleDelete(post._id);
+      router.refresh();
+    }
   };
 
   return (
@@ -69,12 +84,14 @@ const PromptCard = ({ post, handleTagClick }: Props) => {
                 alt="edit_icon"
                 width={20}
                 height={20}
+                onClick={() => handleEdit && handleEdit(post._id)}
               />
               <Image
                 src={"/assets/icons/delete.svg"}
                 alt="delete_icon"
                 width={22}
                 height={22}
+                onClick={() => handleDelete && handleLocalDelete(post._id)}
               />
             </>
           )}

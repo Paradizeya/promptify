@@ -5,11 +5,11 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const ProfilePage = () => {
-  const router = useRouter();
   const session = useSession();
+  const router = useRouter();
   useEffect(() => {
     router.replace(`/profile/${session?.data?.user.id}`);
-  }, [session.data?.user.id]);
+  }, [session.data?.user.id, router]);
 
   return <></>;
 };

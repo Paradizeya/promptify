@@ -30,6 +30,20 @@ $white: #fff8f2;
   font-family: inherit;
 }
 
+@mixin title($color1, $color2) {
+  background: linear-gradient(
+    60deg,
+    $color1,
+    lighten($color2, 20%),
+    $color1,
+    lighten($color2, 20%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: $color2;
+}
+
 @mixin glassmorphism($borderRad: 10px, $bgcol: rgba(201, 201, 201, 0.178)) {
   /* From https://css.glass */
   background: $bgcol;

@@ -1,15 +1,21 @@
-import type { Post } from "@/components/feed/Feed";
+import type Post from "@/types/Post";
 import PromptCard from "./PromptCard";
+
+type Props = {
+  data: Post[];
+  handleTagClick?: (tag: string) => void;
+  handleDelete?: (id: string) => void;
+  handleEdit?: (id: string) => void;
+};
 
 const PromptCardList = ({
   data,
   handleTagClick,
-}: {
-  data: Post[];
-  handleTagClick?: (tag: string) => void;
-}) => {
+  handleDelete,
+  handleEdit,
+}: Props) => {
   return (
-    <div className="feed__listWrapper">
+    <div className="promptListWrapper">
       {data &&
         data.map((post) => {
           return (
@@ -17,6 +23,8 @@ const PromptCardList = ({
               key={post._id}
               post={post}
               handleTagClick={handleTagClick}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
             />
           );
         })}

@@ -27,13 +27,4 @@
       }
     }
   }
-  &__listWrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-
-    @media (max-width: 756px) {
-      grid-template-columns: 1fr;
-    }
-  }
 }

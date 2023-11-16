@@ -1,38 +1,54 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import type { Post } from "@/components/feed/Feed";
-import { useSession } from "next-auth/react";
-
+import getUser from "@/app/services/getUser";
+import getUserPosts from "@/app/services/getUserPosts";
 import PromptCardList from "@/components/promptCard/PromptCardList";
+//import { authConfig } from "@/app/configs/auth";
+//import { getServerSession } from "next-auth/next";
+import NotFoundPage from "@/app/not-found";
 
-const ProfilePage = ({ params }: { params: { id: string } }) => {
-  const session = useSession();
-  const [posts, setPosts] = useState<Post[]>([]);
+const ProfilePage = async ({ params }: { params: { id: string } }) => {
+  //const session = await getServerSession(authConfig);
+  //const isMyProfile = session?.user.id === params.id ? true : false;
+  const isMyProfile = false;
 
-  const isMyProfile =
-    session?.data?.user.id && session.data.user.id === params.id;
+  const user = await getUser(params.id);
+  const posts = await getUserPosts(params.id);
+  
+  const handleEdit = async (id: string) => {
+    "use server";
+    console.log(id);
+  };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch(`/api/user/${params.id}/posts`);
-      const data = await response.json();
-      if (response.ok) {
-        setPosts(data);
-      }
-    };
-    if (params?.id) fetchPosts();
-  }, [params.id]);
+  const handleDelete = async (id: string) => {
+    "use server";
+    try {
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BASE_URL + `/api/prompt/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const handleEdit = () => {};
-  const handleDelete = () => {};
-
-  return (
-    <section>
-      <h1>{isMyProfile ? `My Profile` : `Profile of ${params.id}`}</h1>
-      <PromptCardList data={posts} />
-    </section>
-  );
+  if (user !== null) {
+    return (
+      <section className="profile">
+        <h1 className="profile__title">
+          {isMyProfile ? `My Profile` : `${user.username}'s Profile`}
+        </h1>
+        <PromptCardList
+          data={posts}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
+      </section>
+    );
+  } else {
+    return <NotFoundPage error="This user does not exists" />;
+  }
 };
 
 export default ProfilePage;

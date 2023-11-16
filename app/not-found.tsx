@@ -1,13 +1,17 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+type Props = {
+  error?: string;
+};
 
-const NotFoundPage = (props: Props) => {
+const NotFoundPage = ({ error }: Props) => {
   return (
     <section className="notFound">
-      <h2 className="notFound__title">404 | Not Found</h2>
-      <p className="notFound__text">Could not find requested resource</p>
+      <h1 className="notFound__title">404 | Not Found</h1>
+      <p className="notFound__text">
+        {error ? error : "Could not find requested resource"}
+      </p>
       <Link href="/" className="primary-btn">
         Return Home
       </Link>
