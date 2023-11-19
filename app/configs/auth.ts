@@ -52,7 +52,7 @@ export const authConfig: AuthOptions = {
         //if user exists
         const userExists = await User.findOne({ email: user.email });
         //if not - create new one
-        if (!userExists) {
+        if (userExists === null) {
           await User.create({
             email: user.email,
             username: user.name?.replaceAll(" ", "").toLowerCase(),
