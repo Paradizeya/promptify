@@ -1,5 +1,10 @@
 export { default } from "next-auth/middleware";
 
 export const config = {
-  matcher: ["/profile", "/create-prompt", "/protected/:path*"],
+  matcher: [
+    "/profile",
+    "/create-prompt",
+    "/update-prompt",
+    "/protected/:path*",
+  ],
 };
