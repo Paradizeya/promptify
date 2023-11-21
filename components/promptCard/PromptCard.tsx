@@ -84,7 +84,11 @@ const PromptCard = ({
                 alt="edit_icon"
                 width={20}
                 height={20}
-                onClick={() => handleEdit && handleEdit(post._id)}
+                onClick={() =>
+                  handleEdit
+                    ? handleEdit(post._id)
+                    : router.push(`/update-prompt?id=${post._id}`)
+                }
               />
               <Image
                 src={"/assets/icons/delete.svg"}
@@ -106,7 +110,7 @@ const PromptCard = ({
           }`}
           onClick={() => handleTagClick && handleTagClick(post.tag)}
         >
-          {post.tag}
+          #{post.tag}
         </a>
       </div>
     </article>
