@@ -6,17 +6,16 @@ import PromptCardList from "@/components/promptCard/PromptCardList";
 import NotFoundPage from "@/app/not-found";
 
 const ProfilePage = async ({ params }: { params: { id: string } }) => {
+  //getServerSession taking too long at Vercel
   //const session = await getServerSession(authConfig);
   //const isMyProfile = session?.user.id === params.id ? true : false;
   const isMyProfile = false;
 
   const user = await getUser(params.id);
   const posts = await getUserPosts(params.id);
-  
-  const handleEdit = async (id: string) => {
-    "use server";
-    console.log(id);
-  };
+
+  // const handleEdit = async (id: string) => {
+  // };
 
   const handleDelete = async (id: string) => {
     "use server";
@@ -39,9 +38,13 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
         <h1 className="profile__title">
           {isMyProfile ? `My Profile` : `${user.username}'s Profile`}
         </h1>
+        <p>
+          This is the personal profile of user {user.username}. You can see all
+          their posts on this page!
+        </p>
         <PromptCardList
           data={posts}
-          handleEdit={handleEdit}
+          //handleEdit={handleEdit}
           handleDelete={handleDelete}
         />
       </section>
