@@ -26,12 +26,17 @@
     height: calc(100% - 2rem);
   }
   &__input {
+    background-color: white;
     @include baseInput();
     width: 100%;
-    transition: border-bottom 0.2s;
+    transition: border-bottom 0.2s, background-color 0.3s ease-in-out;
     resize: none;
     &:focus {
       border-bottom: 1px solid $blue;
+    }
+    &:disabled {
+      background-color: rgba(255, 255, 255, 0.699);
+      cursor: wait;
     }
   }
   &__buttonsPanel {
