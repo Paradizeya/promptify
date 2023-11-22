@@ -39,7 +39,7 @@ const Feed = ({ posts }: { posts: Post[] | null }) => {
         setDisplayPosts(posts);
       }
     }
-  }, [search, tag]);
+  }, [posts, search, tag]);
 
   const handleTagClick = (tag: string) => {
     router.push(`?tag=${tag}`);
