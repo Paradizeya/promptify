@@ -8,12 +8,12 @@ const CreatePage = () => {
   const session = useSession();
   const router = useRouter();
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [post, setPost] = useState({ prompt: "", tag: "" });
 
   const createPrompt = async (e: FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIsLoading(true);
     try {
       const response = await fetch("api/prompt/new", {
         method: "POST",
@@ -30,7 +30,7 @@ const CreatePage = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsSubmitting(false);
+      setIsLoading(false);
     }
   };
 
@@ -47,7 +47,7 @@ const CreatePage = () => {
         type={"Create"}
         post={post}
         setPost={setPost}
-        isSubmitting={isSubmitting}
+        isLoading={isLoading}
         handleSubmit={createPrompt}
       />
     </section>
