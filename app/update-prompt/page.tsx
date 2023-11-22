@@ -11,19 +11,26 @@ const UpdatePage = () => {
   const promptId = useSearchParams().get("id");
 
   const [isCreator, setIsCreator] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [post, setPost] = useState({ prompt: "", tag: "" });
 
   useEffect(() => {
     const getPrompt = async () => {
-      const response = await fetch(`/api/prompt/${promptId}`);
-      if (response.ok) {
-        const data: Post = await response.json();
-        setPost({
-          prompt: data.prompt,
-          tag: data.tag,
-        });
-        if (data.creator._id === session.data?.user.id) setIsCreator(true);
+      setIsLoading(true);
+      try {
+        const response = await fetch(`/api/prompt/${promptId}`);
+        if (response.ok) {
+          const data: Post = await response.json();
+          setPost({
+            prompt: data.prompt,
+            tag: data.tag,
+          });
+          if (data.creator._id === session.data?.user.id) setIsCreator(true);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     if (promptId) getPrompt();
@@ -41,7 +48,7 @@ const UpdatePage = () => {
       );
       return router.push("/");
     }
-    setIsSubmitting(true);
+    setIsLoading(true);
     try {
       const response = await fetch(`/api/prompt/${promptId}`, {
         method: "PATCH",
@@ -57,7 +64,7 @@ const UpdatePage = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsSubmitting(false);
+      setIsLoading(false);
     }
   };
 
@@ -74,7 +81,7 @@ const UpdatePage = () => {
         type={"Update"}
         post={post}
         setPost={setPost}
-        isSubmitting={isSubmitting}
+        isLoading={isLoading}
         handleSubmit={updatePrompt}
       />
     </section>

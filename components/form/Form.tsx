@@ -9,11 +9,11 @@ type Props = {
   type: string;
   post: Post;
   setPost: Dispatch<SetStateAction<Post>>;
-  isSubmitting: boolean;
+  isLoading: boolean;
   handleSubmit: (e: FormEvent) => void;
 };
 
-const Form = ({ type, post, setPost, isSubmitting, handleSubmit }: Props) => {
+const Form = ({ type, post, setPost, isLoading, handleSubmit }: Props) => {
   return (
     <form onSubmit={handleSubmit} className="form" action="">
       <label htmlFor="promptInput" className="form__textareaLabel">
@@ -24,9 +24,10 @@ const Form = ({ type, post, setPost, isSubmitting, handleSubmit }: Props) => {
           className="form__input"
           id="promptInput"
           placeholder="Write your post here"
-          required
           rows={10}
           cols={50}
+          required
+          disabled={isLoading}
         />
       </label>
 
@@ -45,12 +46,13 @@ const Form = ({ type, post, setPost, isSubmitting, handleSubmit }: Props) => {
           type="text"
           placeholder="#Tag"
           required
+          disabled={isLoading}
         />
       </label>
 
       <div className="form__buttonsPanel">
-        <button type="submit" disabled={isSubmitting} className="action-btn">
-          {isSubmitting ? `Submitting...` : type}
+        <button type="submit" disabled={isLoading} className="action-btn">
+          {isLoading ? `Loading...` : type}
         </button>
 
         <Link className="secondary-btn" href="/">
