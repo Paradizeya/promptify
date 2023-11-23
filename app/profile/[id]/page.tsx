@@ -38,7 +38,7 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
         <h1 className="profile__title">
           {isMyProfile ? `My Profile` : `${user.username}'s Profile`}
         </h1>
-        <p>
+        <p className="profile__desc">
           This is the personal profile of user {user.username}. You can see all
           their posts on this page!
         </p>

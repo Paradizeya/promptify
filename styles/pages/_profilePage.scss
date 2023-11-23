@@ -4,4 +4,8 @@
   &__title {
     @include title($green, $green);
   }
+  &__desc {
+    font-weight: 300;
+    text-align: center;
+  }
 }
