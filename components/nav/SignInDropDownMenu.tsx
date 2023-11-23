@@ -1,6 +1,7 @@
 import { signIn } from "next-auth/react";
 import type { GetProviderResponse } from "./Nav";
 import { CSSTransition } from "react-transition-group";
+import { Image } from "next/dist/client/image-component";
 
 import { useState, useRef } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
@@ -34,13 +35,20 @@ const SignInDropDownMenu = ({ providers }: Props) => {
             Object.values(providers).map((provider) => {
               return (
                 <button
-                  className="primary-btn"
+                  className="primary-btn signInMenu__providerButton"
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
                     setToggleDropdown(false);
                   }}
                 >
+                  <Image
+                    className="signInMenu__providerIcon"
+                    src={`/assets/icons/${provider.name.toLocaleLowerCase()}.svg`}
+                    alt="Logo"
+                    width={20}
+                    height={20}
+                  />
                   Sign In with {provider.name}
                 </button>
               );

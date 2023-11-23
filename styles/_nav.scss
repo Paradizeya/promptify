@@ -84,5 +84,25 @@
   &__body {
     $top: calc(100% + 0.5rem);
     @include dropDown($top);
+
+    @media (max-width: 320px) {
+      width: 200px;
+      white-space: wrap;
+    }
+  }
+
+  &__providerIcon {
+    filter: invert(1);
+    transition: 0.3s;
+  }
+
+  &__providerButton {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    place-items: center;
+    gap: 0.5rem;
+    &:hover > .signInMenu__providerIcon {
+      filter: invert(0);
+    }
   }
 }
