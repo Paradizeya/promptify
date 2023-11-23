@@ -5,6 +5,7 @@
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Loading from "../loading";
 
 const ProfilePage = () => {
   const session = useSession();
@@ -13,7 +14,7 @@ const ProfilePage = () => {
     router.replace(`/profile/${session?.data?.user.id}`);
   }, [session.data?.user.id, router]);
 
-  return <></>;
+  return <Loading />;
 };
 
 export default ProfilePage;
