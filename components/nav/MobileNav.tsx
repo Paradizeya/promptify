@@ -13,6 +13,7 @@ type Props = {
   providers: GetProviderResponse;
   profilePicture: string;
   pathnameIsCreate: boolean;
+  userId?: string;
 };
 
 const MobileNav = ({
@@ -20,6 +21,7 @@ const MobileNav = ({
   providers,
   profilePicture,
   pathnameIsCreate,
+  userId,
 }: Props) => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const transitionNodeRef = useRef(null);
@@ -52,7 +54,7 @@ const MobileNav = ({
             >
               <Link
                 className="headerNav__mobile__dropdown__link"
-                href={"/profile"}
+                href={userId ? `/profile/${userId}` : `/profile`}
                 onClick={() => setToggleDropdown(false)}
               >
                 My profile

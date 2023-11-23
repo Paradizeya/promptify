@@ -56,6 +56,7 @@ const Nav = () => {
         providers={providers}
         pathnameIsCreate={pathnameIsCreate}
         isLogged={session.data ? true : false}
+        userId={session.data ? session.data.user.id : undefined}
         profilePicture={
           session?.data?.user?.image
             ? session.data.user.image
@@ -66,6 +67,7 @@ const Nav = () => {
         providers={providers}
         pathnameIsCreate={pathnameIsCreate}
         isLogged={session.data ? true : false}
+        userId={session.data ? session.data.user.id : undefined}
         profilePicture={
           session?.data?.user?.image
             ? session.data.user.image

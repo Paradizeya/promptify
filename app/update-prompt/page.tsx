@@ -58,7 +58,7 @@ const UpdatePage = () => {
         }),
       });
       if (response.ok) {
-        router.push("/profile");
+        router.push(`/profile/${session.data?.user.id}`);
         router.refresh();
       }
     } catch (error) {

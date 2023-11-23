@@ -9,6 +9,7 @@ type Props = {
   providers: GetProviderResponse;
   profilePicture: string;
   pathnameIsCreate: boolean;
+  userId?: string;
 };
 
 const DesktopNav = ({
@@ -16,6 +17,7 @@ const DesktopNav = ({
   providers,
   profilePicture,
   pathnameIsCreate,
+  userId,
 }: Props) => {
   return (
     <div className="headerNav__desktop">
@@ -33,7 +35,10 @@ const DesktopNav = ({
             Sign Out
           </button>
 
-          <Link href={"/profile"} className="headerNav__profilePicture">
+          <Link
+            href={userId ? `/profile/${userId}` : `/profile`}
+            className="headerNav__profilePicture"
+          >
             <Image
               src={profilePicture}
               alt="Profile picture"
