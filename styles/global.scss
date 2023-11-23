@@ -20,6 +20,7 @@ h4 {
 // ---------- General Styles
 
 body {
+  position: relative;
   background-color: $white;
   background: radial-gradient(
     circle,
@@ -29,6 +30,17 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  &::before {
+    position: fixed;
+    top: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/images/grid.svg");
+    z-index: -10000;
+    opacity: 0.3;
+    filter: invert(1);
+  }
 }
 
 main {
@@ -39,6 +51,11 @@ section {
   width: 100%;
 
   display: grid;
+  place-items: center;
+}
+
+.loading {
+  padding-top: calc(50dvh - 200px);
   place-items: center;
 }
 
