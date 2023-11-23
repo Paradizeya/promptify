@@ -1,4 +1,5 @@
 "use client";
+import "@/styles/pages/createUpdatePage.scss";
 import { FormEvent, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";

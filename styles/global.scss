@@ -73,28 +73,8 @@ h1 {
   font-weight: 300;
 }
 
-// Header Styles
-@import "./nav.scss";
-
-// Home Page styles > feed, card
-@import "./pages/homePage.scss";
-@import "./feed.scss";
-@import "./promptCard.scss";
-
-// Create Page styles
-@import "./pages/createPage.scss";
-
-// Profile Page styles
-@import "./pages/profilePage.scss";
-
-// Reusable Form styles
-@import "./form.scss";
-
-// NotFound Page styles
-@import "./notFound.scss";
-
 // Buttons styles
 @import "./buttons.scss";
 
 // React-Transition-Group Animations
-@import "./transitions.scss";
+@import "./animations.scss";

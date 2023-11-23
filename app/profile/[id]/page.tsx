@@ -1,3 +1,4 @@
+import "@/styles/pages/profilePage.scss";
 import getUser from "@/app/services/getUser";
 import getUserPosts from "@/app/services/getUserPosts";
 import PromptCardList from "@/components/promptCard/PromptCardList";

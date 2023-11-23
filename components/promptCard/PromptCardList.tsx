@@ -1,5 +1,6 @@
 import type Post from "@/types/Post";
 import PromptCard from "./PromptCard";
+import "./styles.scss";
 
 type Props = {
   data: Post[];

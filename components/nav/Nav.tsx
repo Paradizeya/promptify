@@ -1,4 +1,5 @@
 "use client";
+import "./styles.scss";
 
 import Link from "next/dist/client/link";
 import { Image } from "next/dist/client/image-component";

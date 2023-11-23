@@ -1,5 +1,6 @@
 import Feed from "@/components/feed/Feed";
 import getPosts from "@/app/services/getPosts";
+import "@/styles/pages/homePage.scss";
 
 const HomePage = async () => {
   const posts = await getPosts();

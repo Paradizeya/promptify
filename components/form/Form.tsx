@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React, { Dispatch, SetStateAction, FormEvent } from "react";
 
+import "./styles.scss";
+
 type Post = {
   prompt: string;
   tag: string;
