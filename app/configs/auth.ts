@@ -20,10 +20,10 @@ export const authConfig: AuthOptions = {
       //   },
       // },
     }),
-    DiscordProvider({
-      clientId: process.env.DISCORD_CLIENT_ID!,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
-    }),
+    // DiscordProvider({
+    //   clientId: process.env.DISCORD_CLIENT_ID!,
+    //   clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+    // }),
     Credentials({
       credentials: {
         email: { label: "email", type: "email", required: true },
