@@ -37,7 +37,7 @@ const Form = ({ type, post, setPost, isLoading, handleSubmit }: Props) => {
         <h2 className="form__inputName">
           Tag{" "}
           <span className="smallText">
-            (#product, #webdevelopment, #idea, etc.)
+            (product, webdevelopment, idea, etc.)
           </span>
         </h2>
         <input
@@ -46,7 +46,7 @@ const Form = ({ type, post, setPost, isLoading, handleSubmit }: Props) => {
           className="form__input"
           id="tagInput"
           type="text"
-          placeholder="#Tag"
+          placeholder="tag"
           required
           disabled={isLoading}
         />
